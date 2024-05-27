@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     #region Serialized Fields
     [Header("Player Settings")]
     [SerializeField]
-    private float _moveSpeed = 5f, _runningSpeed = 8f;
+    private float _moveSpeed = 5f;
+    [SerializeField]
+    private float _runningSpeed = 8f;
 
     [Header("References")]
     [SerializeField]

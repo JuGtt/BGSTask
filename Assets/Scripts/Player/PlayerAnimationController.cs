@@ -9,7 +9,6 @@ public class PlayerAnimationController : MonoBehaviour
     #endregion
     #region Private Fields
     private Animator _baseAnimator;
-    [SerializeField]
     private Animator[] _clothingAnimators;
     private Vector2 _moveInput;
     private Vector2 _lookDirection;
