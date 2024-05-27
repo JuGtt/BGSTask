@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a04d8429b744a4388ad2339cc638b0, type: 3}
+  m_Name: AnimationCreator
+  m_EditorClassIdentifier: 
+  _spriteSheet: {fileID: 2800000, guid: 4c4ccc9b30aa039468ae192c0ff15872, type: 3}
+  _cellSize: {x: 64, y: 64}
+  _frameRate: 12
+  _animationPrefix: Anim_
+  _savePath: Assets/Animations/Clothes/Fstr/
