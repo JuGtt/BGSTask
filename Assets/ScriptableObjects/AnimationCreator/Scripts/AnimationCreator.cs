@@ -160,7 +160,7 @@ public class AnimationCreator : ScriptableObject
         }
         else
         {
-            Debug.LogError("Invalid cell index: " + cellIndex);
+            Debug.Log("Invalid cell index: " + cellIndex);
             return null;
         }
     }
