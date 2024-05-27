@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
-    private PlayerAnimationController _playerAnimatorController;
+    private BoolVariable _isRunning;
     #endregion
 
     #region Private Fields    
@@ -25,13 +25,14 @@ public class PlayerMovement : MonoBehaviour
     // Input
     private bool _isRunningButtonDown;
     private Vector2 _moveInput;
-
-    // Player State
-    private bool _isRunning;
     #endregion
 
     #region Properties
-    public bool IsRunning => _isRunning;
+    private bool IsRunning
+    {
+        get { return _isRunning; }
+        set { _isRunning.SetValue(value); }
+    }
     #endregion
 
     #region Input Read
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateIsRunning()
     {
-        _isRunning = _isRunningButtonDown && CanRun();
+        _isRunning.SetValue(_isRunningButtonDown && CanRun());
     }
     #endregion
 

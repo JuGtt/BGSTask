@@ -9,6 +9,7 @@ public class PlayerAnimationController : MonoBehaviour
     #endregion
     #region Private Fields
     private Animator _baseAnimator;
+    [SerializeField]
     private Animator[] _clothingAnimators;
     private Vector2 _moveInput;
     private Vector2 _lookDirection;
@@ -22,7 +23,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         for (int i = 0; i < animatorsCount; i++)
         {
-            _clothingAnimators[i] = GetComponent<Animator>();
+            _clothingAnimators[i] = transform.GetChild(i).GetComponent<Animator>();
         }
     }
 
@@ -46,6 +47,11 @@ public class PlayerAnimationController : MonoBehaviour
         PlayerMovement.OnMoveAction += OnMove;
     }
 
+    private void Update()
+    {
+        UpdateAnimation();
+    }
+
     private void OnDisable()
     {
         PlayerMovement.OnMoveAction -= OnMove;
@@ -54,16 +60,22 @@ public class PlayerAnimationController : MonoBehaviour
     private void UpdateAnimation()
     {
         float speed = _moveInput.sqrMagnitude;
-        Vector2 moveInput = _lookDirection;
-        if (speed >= 0.1f)
-        {
-            if (!_isRunning)            
-                moveInput *= 2;            
-            else if (_isRunning)            
-                moveInput *= 3;            
-        }
+        Vector2 moveInput = _moveInput;
+
+        if (speed >= 0.1f)        
+            moveInput *= _isRunning ? 3 : 2;
+        else
+            moveInput = _lookDirection;
+        
         _baseAnimator.SetFloat("Horizontal", moveInput.x);
         _baseAnimator.SetFloat("Vertical", moveInput.y);
+
+        // Sync Animation Across All Clothing
+        foreach (Animator animator in _clothingAnimators)
+        {
+            animator.SetFloat("Horizontal", moveInput.x);
+            animator.SetFloat("Vertical", moveInput.y);
+        }
     }
     #endregion
 }
