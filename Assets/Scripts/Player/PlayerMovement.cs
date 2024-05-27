@@ -1,8 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Public Fields
+    public static event Action<Vector2> OnMoveAction;
+    #endregion
+
     #region Serialized Fields
     [Header("Player Settings")]
     [SerializeField]
@@ -10,8 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
-    private Animator[] _animators;
-
+    private PlayerAnimationController _playerAnimatorController;
     #endregion
 
     #region Private Fields    
@@ -21,19 +25,20 @@ public class PlayerMovement : MonoBehaviour
     // Input
     private bool _isRunningButtonDown;
     private Vector2 _moveInput;
-    private Vector2 _lookDirection;
 
     // Player State
     private bool _isRunning;
+    #endregion
+
+    #region Properties
+    public bool IsRunning => _isRunning;
     #endregion
 
     #region Input Read
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
-
-        if (_moveInput.sqrMagnitude > 0.1f)
-            _lookDirection = _moveInput;
+        OnMoveAction?.Invoke(_moveInput);
     }
 
     public void OnRun(InputAction.CallbackContext context)
@@ -67,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         UpdateIsRunning();
-        UpdateAnimation();
     }
 
     private void FixedUpdate()
@@ -84,32 +88,6 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateIsRunning()
     {
         _isRunning = _isRunningButtonDown && CanRun();
-    }
-
-    private void UpdateAnimation()
-    {
-        float speed = _moveInput.sqrMagnitude;
-        Vector2 moveInput = _lookDirection;
-        if (speed >= 0.1f)
-        {
-            if (!_isRunning)
-            {
-                moveInput *= 2;
-            }
-            else if (_isRunning)
-            {
-                moveInput *= 3;
-            }
-        }
-        // _animators.SetFloat("Speed", speed);
-        // _animators.SetBool("IsRunning", _isRunning);
-        // _animators.SetFloat("Horizontal", moveInput.x);
-        // _animators.SetFloat("Vertical", moveInput.y);
-    }
-
-    private void UpdateAnimators()
-    {
-
     }
     #endregion
 

@@ -2,9 +2,16 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    #region Serialized Fields
+    [Header("References")]
+    [SerializeField]
+    private BoolVariable _isRunning;
+    #endregion
     #region Private Fields
     private Animator _baseAnimator;
     private Animator[] _clothingAnimators;
+    private Vector2 _moveInput;
+    private Vector2 _lookDirection;
     #endregion
 
     #region Public Methods
@@ -18,6 +25,13 @@ public class PlayerAnimationController : MonoBehaviour
             _clothingAnimators[i] = GetComponent<Animator>();
         }
     }
+
+    public void OnMove(Vector2 movement)
+    {
+        _moveInput = movement;
+        if (_moveInput.sqrMagnitude > 0.1f)
+            _lookDirection = _moveInput;
+    }
     #endregion
 
     #region Private Methods
@@ -27,29 +41,29 @@ public class PlayerAnimationController : MonoBehaviour
         PopulateClothingAnimators();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        SyncAnimators();
+        PlayerMovement.OnMoveAction += OnMove;
     }
 
-    private void SyncAnimators()
+    private void OnDisable()
     {
-        AnimatorStateInfo stateInfo = _baseAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach (Animator animator in _clothingAnimators)
-        {
-            animator.Play(stateInfo.fullPathHash, 0, stateInfo.normalizedTime);
-        }
+        PlayerMovement.OnMoveAction -= OnMove;
     }
 
-    public void SetAnimationState(string state)
+    private void UpdateAnimation()
     {
-        _baseAnimator.Play(state);
-
-        foreach (Animator animator in _clothingAnimators)
+        float speed = _moveInput.sqrMagnitude;
+        Vector2 moveInput = _lookDirection;
+        if (speed >= 0.1f)
         {
-            animator.Play(state);
+            if (!_isRunning)            
+                moveInput *= 2;            
+            else if (_isRunning)            
+                moveInput *= 3;            
         }
+        _baseAnimator.SetFloat("Horizontal", moveInput.x);
+        _baseAnimator.SetFloat("Vertical", moveInput.y);
     }
     #endregion
 }
