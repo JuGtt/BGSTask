@@ -5,17 +5,11 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     #region Serialized Fields
-    [SerializeField]
-    private bool _canMove = true;
     [Header("References")]
     [SerializeField]
     private InventorySlotUI _itemPrefab;
     [SerializeField]
     private RectTransform _contentPanel;
-    [SerializeField]
-    private MouseSelection _mouseFollower;
-    [SerializeField]
-    private ItemHover _itemHover;
     [SerializeField]
     private GameObject _equipmentTab;
     [SerializeField]
@@ -23,7 +17,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private RectTransform _inventory;
     [SerializeField]
-    private EquipmentSlotUI _clothesEquipmentSlot;
+    private EquipmentSlotUI _clothesEquipmentSlot, _hatEquipmentSlot, _hairEquipmentSlot, _underwearEquipmentSlot;
     #endregion
 
     #region Private Fields
@@ -33,22 +27,25 @@ public class InventoryUI : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public void InitializeInventoryUI()
+    public void InitializeInventorySlots()
     {
         _uiItems = new List<InventorySlotUI>();
 
-        Inventory thisInventory = _playerInventory.Inventory;
-        List<InventorySlot> items = thisInventory.Items;
-        int count = items.Count;
+        int count = _playerInventory.Inventory.Items.Count;
+        InventorySlot emptySlot = new InventorySlot();
 
-        // Initialize Slots
+        // Initialize Empty Slots
         for (int i = 0; i < count; i++)
         {
-            InventorySlotUI uiSlot = InitializeUISlot(items[i], i);
+            InventorySlotUI uiSlot = InitializeUISlot(emptySlot, i);
             _uiItems.Add(uiSlot);
         }
 
+        // Update Coin Value.
         _coinPouch.SetText(_playerInventory.CoinAmount.ToString());
+
+        // Populate Slots with player's inventory.
+        UpdateInventoryDisplay();
     }
 
     public void ToggleInventory(bool show)
@@ -56,7 +53,7 @@ public class InventoryUI : MonoBehaviour
         ResetSelectedItem();
         _inventory.gameObject.SetActive(show);
         if (_equipmentTab != null) _equipmentTab.SetActive(show);
-        UpdateInventory();
+        UpdateInventoryDisplay();
     }
 
     public bool AddItem(ItemSO newItem, int amount)
@@ -88,7 +85,7 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("Added item at index: " + index);
             InventorySlot newSlot = new InventorySlot(newItem, amount);
             _playerInventory.Inventory.Items[index] = newSlot;
-            UpdateInventory();
+            UpdateInventoryDisplay();
             return true;
         }
 
@@ -101,17 +98,29 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         _playerInventory = GameAssets.PlayerInventory;
-        InitializeInventoryUI();
+        InitializeInventorySlots();
     }
 
     private void OnEnable()
     {
+        _underwearEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
         _clothesEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
+        _hairEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
+        _hatEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
     }
 
     private void OnDisable()
     {
+        _underwearEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
         _clothesEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
+        _hairEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
+        _hatEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
+    }
+
+    private void Update()
+    {
+        if (gameObject.activeInHierarchy)
+            UpdateInventoryDisplay();
     }
 
     private InventorySlotUI InitializeUISlot(InventorySlot slot, int index)
@@ -135,6 +144,7 @@ public class InventoryUI : MonoBehaviour
 
     private int GetIndexOfInventoryItem(ItemSO item)
     {
+        //TODO: Problem if there two or more of the same item.
         for (int i = 0; i < _uiItems.Count; i++)
         {
             if (_uiItems[i].ID == item.ID)
@@ -143,17 +153,23 @@ public class InventoryUI : MonoBehaviour
         return -1;
     }
 
-    public void UpdateInventory()
+    [ContextMenu("Update Inventory")]
+    public void UpdateInventoryDisplay()
     {
-        for (int i = 0; i < _uiItems.Count; i++)
+        for (int i = 0; i < _playerInventory.Inventory.Items.Count; i++)
         {
             InventorySlot slot = _playerInventory.Inventory.Items[i];
+            if (_uiItems.Count <= i)
+            {
+                _uiItems.Add(InitializeUISlot(new InventorySlot(), i)); // Create Empty
+            }
             _uiItems[i].SetData(slot.Item, slot.Amount);
         }
     }
 
     private void HandleEquipmentChange(ItemSO item)
     {
+        Debug.Log("Equip Change");
         ItemSO itemToAdd;
         _playerInventory.RemoveItem(_currentlySelectedItemIndex);
 
@@ -163,7 +179,7 @@ public class InventoryUI : MonoBehaviour
             itemToAdd = new InventorySlot(null, 0).Item;
 
         _playerInventory.AddItem(itemToAdd, 1);
-        UpdateInventory();
+        UpdateInventoryDisplay();
         ResetSelectedItem();
     }
 
@@ -171,27 +187,28 @@ public class InventoryUI : MonoBehaviour
     {
         if (_currentlySelectedItemIndex != -1)
             HandleDisselect(_currentlySelectedItemIndex);
-        _mouseFollower.Toggle(false);
+        GameManager.Instance.MouseSelection.Toggle(false);
         _currentlySelectedItemIndex = -1;
     }
 
     private void CreateSelectedItem(ItemSO item, int amount)
     {
-        _mouseFollower.Toggle(true);
-        _mouseFollower.SetData(item, amount);
+        GameManager.Instance.MouseSelection.Toggle(true);
+        GameManager.Instance.MouseSelection.SetData(item, amount);
     }
 
     private void HandleClick(InventorySlotUI slotUI, ItemSO item, int amount)
     {
-        _itemHover.Toggle(false);
+        //TODO: AUDIO SFX
+        GameManager.Instance.ItemHover.Toggle(false);
 
         //TODO: This index should not be counted on.
         int index = slotUI.Index;
 
         if (_currentlySelectedItemIndex != -1)
         {
+            int selectedIndex = _currentlySelectedItemIndex;
             ResetSelectedItem();
-            int selectedIndex = GetIndexOfInventoryItem(_mouseFollower.SelectedItem);
             HandleDisselect(selectedIndex);
             HandleSwap(selectedIndex, index);
             return;
@@ -221,29 +238,60 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("Index was not found.");
             return;
         }
-
-        //Handle Inventory Change
         InventorySlot targetSlot = _playerInventory.Inventory.Items[targetIndex];
-        _playerInventory.Inventory.Items[targetIndex] = _playerInventory.Inventory.Items[selectedIndex];
+        InventorySlot selectedSlot = _playerInventory.Inventory.Items[selectedIndex];
+
+        // Handle Stackable Items
+        if (targetSlot.Item != null && selectedSlot.Item != null)
+        {
+            if (targetSlot.Item.ID == selectedSlot.Item.ID && targetSlot.Item.IsStackable)
+            {
+                int totalAmount = targetSlot.Amount + selectedSlot.Amount;
+
+                if (totalAmount > targetSlot.Item.MaxStackSize)
+                {
+                    //TODO: Handle swapping amounts if one of the items is at the maximum already
+                    int excessAmount = totalAmount - targetSlot.Item.MaxStackSize;
+                    targetSlot.Amount = targetSlot.Item.MaxStackSize;
+                    selectedSlot.Amount = excessAmount;
+                }
+                else
+                {
+                    targetSlot.Amount = totalAmount;
+                    selectedSlot = new InventorySlot(); // Clear the selected slot
+                }
+                _playerInventory.Inventory.Items[targetIndex] = targetSlot;
+                _playerInventory.Inventory.Items[selectedIndex] = selectedSlot;
+
+                //TODO: AUDIO SFX;
+                UpdateInventoryDisplay();
+                return;
+            }
+        }
+        _playerInventory.Inventory.Items[targetIndex] = selectedSlot;
         _playerInventory.Inventory.Items[selectedIndex] = targetSlot;
 
+        //TODO: AUDIO SFX;
+
         //Update UI
-        UpdateInventory();
+        UpdateInventoryDisplay();
     }
 
     private void HandleEnter(InventorySlotUI slotUI, ItemSO item, int amount)
     {
         if (_currentlySelectedItemIndex != -1)
             if (_uiItems[_currentlySelectedItemIndex] == slotUI)
-                return;
+                return; // Shouldn't show Hover if you're targetting the selected item.
 
-        _itemHover.Toggle(true);
-        _itemHover.UpdateHover(item);
+        //TODO: Audio SFX.
+
+        GameManager.Instance.ItemHover.Toggle(true);
+        GameManager.Instance.ItemHover.UpdateHover(item);
     }
 
     private void HandleExit()
     {
-        _itemHover.Toggle(false);
+        GameManager.Instance.ItemHover.Toggle(false);
     }
     #endregion
 }

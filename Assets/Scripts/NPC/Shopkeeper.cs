@@ -40,5 +40,10 @@ public class Shopkeeper : MonoBehaviour
             CloseShop();
         }
     }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("Mouse over shopkeeper");
+    }
     #endregion
 }

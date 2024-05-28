@@ -11,6 +11,11 @@ public class InventorySlot
     #endregion
 
     #region Constructor
+    public InventorySlot()
+    {
+        Item = null;
+        Amount = 0;
+    }
     public InventorySlot(ItemSO item, int amount)
     {
         Item = item;

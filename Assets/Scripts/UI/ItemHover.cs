@@ -14,7 +14,6 @@ public class ItemHover : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private ItemDataBaseObject _database;
     private Vector2 _mousePos;
     #endregion
 
@@ -34,6 +33,7 @@ public class ItemHover : MonoBehaviour
     {
         if (item == null)
         {
+            // If hovered over Empty Inventory Slot.
             Toggle(false);
             return;
         }
@@ -43,6 +43,7 @@ public class ItemHover : MonoBehaviour
             _itemType.SetText(item.ItemType.ToString());
         else
             _itemType.SetText("");
+
         _itemDescription.SetText(item.Description);
 
         transform.position = _mousePos + _offset;
@@ -50,11 +51,6 @@ public class ItemHover : MonoBehaviour
     #endregion
 
     #region Private Methods
-    private void Awake()
-    {
-        _database = GameAssets.Database;
-    }
-
     private void Update()
     {
         transform.position = Vector2.Lerp(transform.position, _mousePos + _offset, _followSpeed * Time.deltaTime);

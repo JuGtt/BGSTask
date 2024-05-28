@@ -16,8 +16,6 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
     private ItemType _itemType;
     [SerializeField]
     private ItemSO _equippedItem;
-    [SerializeField]
-    private MouseSelection _mouseSelection;
     #endregion
 
     #region Properties
@@ -26,16 +24,19 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 
     #region Public Methods
     [ContextMenu("Update Equipped Item")]
-    public void ChangeEquippedItem()
+    public void ChangeEquippedItem(ItemSO newItem)
     {
-        ItemSO item = _mouseSelection.SelectedItem;
-        if (item == null) return;
+        ItemSO item = newItem;
+        if (item == null)
+            return;
+
         if (item.ItemType != _itemType)
         {
             //TODO: Add audio feedback.
             Debug.Log("Cant Equip this here!");
             return;
         }
+        _itemImage.enabled = true;
         ItemSO oldItem = _equippedItem;
         _equippedItem = item;
         _itemImage.sprite = _equippedItem.ItemImage;
@@ -44,7 +45,24 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Clicked.");
+        Debug.Log("On Click");
+        ItemSO item = GameManager.Instance.MouseSelection.SelectedItem;
+        ChangeEquippedItem(item);
+    }
+    #endregion
+
+    #region Private Methods
+    private void Start()
+    {
+        UpdateEquippedItem();
+    }
+
+    private void UpdateEquippedItem()
+    {
+        if (_equippedItem == null)
+        {
+            _itemImage.enabled = false;
+        }
     }
     #endregion
 }

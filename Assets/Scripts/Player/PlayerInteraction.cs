@@ -5,7 +5,11 @@ public class PlayerInteraction : MonoBehaviour
 {
     #region Serialized Fields
     [SerializeField, Tooltip("Which layers are interactable?")]
-    private LayerMask _layerMask;
+    private LayerMask _layerMask;    
+    #endregion
+
+    #region Private Fields
+    private Vector2 _mousePos;
     #endregion
 
     #region Input Read
@@ -15,6 +19,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             TryToInteract();
         }
+    }
+
+    public void OnMouse(InputAction.CallbackContext context)
+    {
+        _mousePos = context.ReadValue<Vector2>();
     }
     #endregion
 

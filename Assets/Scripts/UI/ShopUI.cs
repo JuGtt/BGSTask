@@ -20,21 +20,56 @@ public class ShopUI : MonoBehaviour
     public void Toggle(bool show)
     {
         gameObject.SetActive(show);
-        InitializeShopUI();
+        //UpdateInventoryDisplay(); // Enable if disabling on update.
     }
+
     public void InitializeShopUI()
     {
-        if (_uiItems.Count == 0)
+        ClearShop();
+        for (int i = 0; i < _inventory.Inventory.Items.Count; i++)
         {
-            _uiItems.Clear();
-            for (int i = 0; i < _inventory.Inventory.Items.Count; i++)
+            InventorySlot itemSlot = _inventory.Inventory.Items[i];
+            ShopSlotUI shopSlotUI = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity, _content);
+            shopSlotUI.SetData(itemSlot.Item.ID);
+            _uiItems.Add(shopSlotUI);
+        }
+    }
+
+    public void UpdateInventoryDisplay()
+    {
+        for (int i = 0; i < _inventory.Inventory.Items.Count; i++)
+        {
+            InventorySlot slot = _inventory.Inventory.Items[i];
+            if (_uiItems.Count <= i)
             {
-                InventorySlot itemSlot = _inventory.Inventory.Items[i];
                 ShopSlotUI shopSlotUI = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity, _content);
-                shopSlotUI.SetData(itemSlot.Item.ID);
                 _uiItems.Add(shopSlotUI);
             }
+            _uiItems[i].SetData(slot.Item.ID);
         }
+    }
+
+    public void ClearShop()
+    {
+        _uiItems.Clear();
+        for (int i = 0; i < _content.childCount; i++)
+        {
+            GameObject child = _content.GetChild(i).gameObject;
+            Destroy(child);
+        }
+    }
+    #endregion
+
+    #region Private Methods
+    private void Start()
+    {
+        InitializeShopUI();
+    }
+
+    private void Update()
+    {
+        if (gameObject.activeInHierarchy)
+            UpdateInventoryDisplay();
     }
     #endregion
 }

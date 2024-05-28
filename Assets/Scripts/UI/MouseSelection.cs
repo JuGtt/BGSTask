@@ -18,6 +18,7 @@ public class MouseSelection : MonoBehaviour
 
     #region Properties
     public ItemSO SelectedItem => _selectedItem;
+    public InventorySlotUI InventorySlotUI => _inventorySlotUI;
     #endregion
 
     #region Input Read

@@ -14,14 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory:
     Items:
-    - Item: {fileID: 11400000, guid: 7b72a5818b1b8f447b363c49a1f52320, type: 2}
+    - Item: {fileID: 11400000, guid: c789111438060324aab67ea40925ae3c, type: 2}
       Amount: 1
-    - Item: {fileID: 11400000, guid: 568ea9902f27039419a165e010f1131b, type: 2}
-      Amount: 10
+    - Item: {fileID: 11400000, guid: 3aae6ba7455a996468de75c28daefa21, type: 2}
+      Amount: 1
     - Item: {fileID: 0}
       Amount: 0
     - Item: {fileID: 11400000, guid: 3aae6ba7455a996468de75c28daefa21, type: 2}
       Amount: 1
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 11400000, guid: 568ea9902f27039419a165e010f1131b, type: 2}
+      Amount: 21
+    - Item: {fileID: 11400000, guid: 568ea9902f27039419a165e010f1131b, type: 2}
+      Amount: 99
+    - Item: {fileID: 11400000, guid: 568ea9902f27039419a165e010f1131b, type: 2}
+      Amount: 99
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 11400000, guid: 568ea9902f27039419a165e010f1131b, type: 2}
+      Amount: 81
     - Item: {fileID: 0}
       Amount: 0
     - Item: {fileID: 11400000, guid: 3aae6ba7455a996468de75c28daefa21, type: 2}
