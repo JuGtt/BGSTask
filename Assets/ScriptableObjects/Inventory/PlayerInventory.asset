@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed779409ebb0c54f83734da7feaa57f, type: 3}
+  m_Name: PlayerInventory
+  m_EditorClassIdentifier: 
+  _inventory:
+    Items:
+    - Item: {fileID: 11400000, guid: 3aae6ba7455a996468de75c28daefa21, type: 2}
+      Amount: 0
+    - Item: {fileID: 11400000, guid: bde44ecd0a39ea649990df0fa686211a, type: 2}
+      Amount: 0
+    - Item: {fileID: 11400000, guid: c14a3ef2d980d6941827442473d5853e, type: 2}
+      Amount: 0
+    - Item: {fileID: 11400000, guid: c789111438060324aab67ea40925ae3c, type: 2}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+    - Item: {fileID: 0}
+      Amount: 0
+  _playerCoinAmount: {fileID: 11400000, guid: 14da33c9199cd924f86c0d34953c487d, type: 2}

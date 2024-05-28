@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleUI",
+                    "type": "Button",
+                    "id": "54061df8-3af8-41db-a1a5-f209b2657bbc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -158,11 +167,22 @@
                 {
                     "name": "",
                     "id": "c0db76ae-adea-4c3c-8bca-1b0c2e3a1c08",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df96916f-9041-40bf-a0f2-f66c0303691b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ToggleUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -173,9 +193,18 @@
             "id": "3be686f9-c741-42f4-89cb-1458c227a6ae",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "MousePosition",
+                    "type": "Value",
                     "id": "d1221328-56dd-4fc2-a7c1-17c505894b78",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ToggleUI",
+                    "type": "Button",
+                    "id": "edb83e2d-d9a2-4c6f-ab01-1714b6495943",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -185,12 +214,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "16d55225-277e-4142-b39b-89d6828211e6",
-                    "path": "",
+                    "id": "bafd5708-3837-442b-bceb-cbb38b34cfd5",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "New action",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4f429be-e9a5-4580-86ac-60b62e5b5012",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ToggleUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

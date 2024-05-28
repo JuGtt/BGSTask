@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2532b78c0958bc742ab8bd025423cc4a, type: 3}
+  m_Name: Leather Helm
+  m_EditorClassIdentifier: 
+  _id: 9
+  _isStackable: 0
+  _canSell: 1
+  _maxStackSize: 1
+  _description: Protects your head!
+  _itemType: {fileID: 11400000, guid: c6c82aaaafb90a64ab8a087b134de094, type: 2}
+  _UIDisplay: {fileID: 2043019121, guid: c5cd06249d3b38c4381066b071156e88, type: 3}
+  _animator: {fileID: 0}
+  _value: 340

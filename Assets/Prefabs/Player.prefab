@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 4347031394270624380}
   - component: {fileID: 4035236138170748462}
   - component: {fileID: 8835267310432371387}
+  - component: {fileID: 4909767983072268929}
   m_Layer: 0
   m_Name: Render
   m_TagString: Untagged
@@ -631,6 +632,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isRunning: {fileID: 11400000, guid: d7401692f338bbe4e96927852a3c67f6, type: 2}
+--- !u!114 &4909767983072268929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362062310411969177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0359d8b4ae3c049aada32a1b818444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hair: {fileID: 8616585094372911931}
+  _hairSlot: {fileID: 0}
+  _hat: {fileID: 2451157751236235165}
+  _hatSlot: {fileID: 0}
+  _clothes: {fileID: 7549606847846709437}
+  _clothesSlot: {fileID: 0}
+  _underwear: {fileID: 9140943050324952511}
+  _underwearSlot: {fileID: 0}
 --- !u!1 &7054881064500792357
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +664,8 @@ GameObject:
   - component: {fileID: 708810378762142835}
   - component: {fileID: 5022142968250191098}
   - component: {fileID: 7580519116168995184}
+  - component: {fileID: 4700693662672988170}
+  - component: {fileID: 23087108751204195}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -737,7 +760,31 @@ MonoBehaviour:
     m_ActionId: 16cc694d-7c59-4b73-9e5d-0faeaab38208
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ItemHover, Assembly-CSharp
+        m_MethodName: OnMousePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MouseFollower, Assembly-CSharp
+        m_MethodName: OnMousePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d1221328-56dd-4fc2-a7c1-17c505894b78
     m_ActionName: UI/New action
   - m_PersistentCalls:
@@ -772,7 +819,39 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c248ad11-a1a0-4c9b-b7a2-296406647b95
     m_ActionName: Player/Interact[/Keyboard/e]
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 23087108751204195}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 54061df8-3af8-41db-a1a5-f209b2657bbc
+    m_ActionName: Player/ToggleUI[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 23087108751204195}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: edb83e2d-d9a2-4c6f-ab01-1714b6495943
+    m_ActionName: UI/ToggleUI[/Keyboard/e]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KeyboardMouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -792,6 +871,36 @@ MonoBehaviour:
   _moveSpeed: 5
   _runningSpeed: 8
   _isRunning: {fileID: 11400000, guid: d7401692f338bbe4e96927852a3c67f6, type: 2}
+--- !u!114 &4700693662672988170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054881064500792357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93051eb6e4a8e894583590d375c97ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory: {fileID: 11400000, guid: 142fd49fabf221f40ae970bd116ddd05, type: 2}
+--- !u!114 &23087108751204195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054881064500792357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c97406ca8cbe242856ba35b116df05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInputManager: {fileID: 5022142968250191098}
+  _inventoryUI: {fileID: 0}
+  _inventory: {fileID: 11400000, guid: 142fd49fabf221f40ae970bd116ddd05, type: 2}
+  _mouseFollowerPrefab: {fileID: 2197375054617880786, guid: 0041956ff85d97c4fb05bb58de31c175, type: 3}
+  _itemHoverPrefab: {fileID: 3183446897689548778, guid: 391a2e704cf909846815cb2bf87f286f, type: 3}
 --- !u!1 &8258605609713665059
 GameObject:
   m_ObjectHideFlags: 0

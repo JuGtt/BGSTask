@@ -21,12 +21,10 @@ public class PlayerInteraction : MonoBehaviour
     #region Private Methods
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triggered");
     }
 
     private void TryToInteract()
     {
-        Debug.Log("Looted!");
     }
     #endregion
 
