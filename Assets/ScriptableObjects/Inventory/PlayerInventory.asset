@@ -14,76 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory:
     Items:
+    - Item: {fileID: 11400000, guid: 7b72a5818b1b8f447b363c49a1f52320, type: 2}
+      Amount: 1
+    - Item: {fileID: 11400000, guid: 568ea9902f27039419a165e010f1131b, type: 2}
+      Amount: 10
+    - Item: {fileID: 0}
+      Amount: 0
     - Item: {fileID: 11400000, guid: 3aae6ba7455a996468de75c28daefa21, type: 2}
-      Amount: 0
-    - Item: {fileID: 11400000, guid: bde44ecd0a39ea649990df0fa686211a, type: 2}
-      Amount: 0
-    - Item: {fileID: 11400000, guid: c14a3ef2d980d6941827442473d5853e, type: 2}
-      Amount: 0
-    - Item: {fileID: 11400000, guid: c789111438060324aab67ea40925ae3c, type: 2}
-      Amount: 0
+      Amount: 1
     - Item: {fileID: 0}
       Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
-    - Item: {fileID: 0}
-      Amount: 0
+    - Item: {fileID: 11400000, guid: 3aae6ba7455a996468de75c28daefa21, type: 2}
+      Amount: 1
   _playerCoinAmount: {fileID: 11400000, guid: 14da33c9199cd924f86c0d34953c487d, type: 2}
