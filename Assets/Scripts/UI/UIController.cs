@@ -37,6 +37,8 @@ public class UIController : MonoBehaviour
             {
                 _inventoryUI.ToggleInventory(_onUI);
             }
+
+            GameManager.Instance.ItemHover.Toggle(false);
         }
     }
     #endregion
@@ -53,7 +55,8 @@ public class UIController : MonoBehaviour
         {
             _shopkeeper = other.transform.root.GetComponent<Shopkeeper>();
             _shopkeeper.ToggleCanInteract(true);
-            _inventoryUI.ToggleInventory(false);
+            if (_onUI)
+                _inventoryUI.ToggleInventory(false);
             _onUI = false;
         }
     }

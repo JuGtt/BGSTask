@@ -35,7 +35,7 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 
         if (item.ItemType != _itemType)
         {
-            AudioManager.Instance.PlaySound("Denied", 0.1f);
+            AudioManager.Instance.PlaySound("Denied", 0.3f);
             Debug.Log("Cant Equip this here!");
             return;
         }
@@ -83,7 +83,7 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            AudioManager.Instance.PlaySound("Denied", 0.1f);
+            AudioManager.Instance.PlaySound("Denied", 0.3f);
         }
     }
     #endregion

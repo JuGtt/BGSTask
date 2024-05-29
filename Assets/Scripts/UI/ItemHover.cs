@@ -9,12 +9,13 @@ public class ItemHover : MonoBehaviour
     private TextMeshProUGUI _itemName, _itemType, _itemDescription, _itemSellValue;
     [SerializeField]
     private float _followSpeed = 15f;
-    [SerializeField]
-    private Vector2 _offset;
+    [SerializeField, Tooltip("By how much the screen will divide to find the optimal offset.")]
+    private float _divider = 1f;
     #endregion
 
     #region Private Fields
     private Vector2 _mousePos;
+    private Vector2 _offset;
     #endregion
 
     #region Input Read
@@ -52,9 +53,18 @@ public class ItemHover : MonoBehaviour
     #endregion
 
     #region Private Methods
+    private void Start()
+    {
+        SetOffSetByScreenSize();
+    }
     private void Update()
     {
         transform.position = Vector2.Lerp(transform.position, _mousePos + _offset, _followSpeed * Time.deltaTime);
+    }
+    private void SetOffSetByScreenSize()
+    {
+        Vector2 newOffset = new Vector2(Screen.width / _divider, -Screen.height / _divider);
+        _offset = newOffset;
     }
     #endregion
 }

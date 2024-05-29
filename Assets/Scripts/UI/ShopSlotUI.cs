@@ -40,7 +40,7 @@ public class ShopSlotUI : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlaySound("Denied", 0.1f);
+            AudioManager.Instance.PlaySound("Denied", 0.3f);
         }
     }
     #endregion

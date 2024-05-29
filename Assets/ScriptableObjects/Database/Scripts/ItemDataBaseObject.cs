@@ -32,9 +32,10 @@ public class ItemDataBaseObject : ScriptableObject, ISerializationCallbackReceiv
     {
         return GetItem.ContainsKey(id) ? GetItem[id] : null;
     }
+#if UNITY_EDITOR
     public void FetchFromPath()
     {
-        if(Items != null) Items.Clear(); // Clear the existing items
+        if (Items != null) Items.Clear(); // Clear the existing items
 
         string[] guids = AssetDatabase.FindAssets("t:ItemSO", new[] { FolderPath });
         foreach (string guid in guids)
@@ -54,6 +55,7 @@ public class ItemDataBaseObject : ScriptableObject, ISerializationCallbackReceiv
             GetItem[i] = Items[i];
         }
     }
+#endif
     #endregion
 
 }

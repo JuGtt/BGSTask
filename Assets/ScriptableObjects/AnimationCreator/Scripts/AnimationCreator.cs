@@ -27,6 +27,7 @@ public class AnimationCreator : ScriptableObject
     #endregion
 
     #region Public Methods
+    #if UNITY_EDITOR
     public void CreateAllAnimations()
     {
         Initialize();
@@ -59,9 +60,11 @@ public class AnimationCreator : ScriptableObject
 
         AssetDatabase.SaveAssets();
     }
+    #endif
     #endregion
 
     #region Private Methods
+    #if UNITY_EDITOR
     private void Initialize()
     {
         string path = AssetDatabase.GetAssetPath(_spriteSheet);
@@ -74,6 +77,7 @@ public class AnimationCreator : ScriptableObject
         _spriteSheetHeight = _spriteSheet.height;
 
     }
+    #endif
     private void AnimationMapper()
     {
         _animationCells = new Dictionary<string, List<Vector2Int>>();

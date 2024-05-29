@@ -83,7 +83,7 @@ public class InventorySO : ScriptableObject
             return true;
         }
 
-        AudioManager.Instance.PlaySound("Denied", 0.1f);
+        AudioManager.Instance.PlaySound("Denied", 0.3f);
         Debug.Log("No inventory space.");
         return false;
     }
