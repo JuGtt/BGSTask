@@ -17,6 +17,7 @@ public class PlayerInventorySO : InventorySO
     {
         if (_playerCoinAmount + amount < 0)
         {
+            AudioManager.Instance.PlaySound("Denied", 0.1f);
             Debug.Log("Not enough coins.");
             return;
         }

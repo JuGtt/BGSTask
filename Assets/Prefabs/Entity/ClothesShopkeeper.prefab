@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1247967816412770711}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.6818037, z: 0}
+  m_LocalPosition: {x: 0.41, y: 2.1818037, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 3104562432520665975}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,7 +239,6 @@ GameObject:
   - component: {fileID: 8633800481918031892}
   - component: {fileID: 8518965037977509429}
   - component: {fileID: 8281173164081059823}
-  - component: {fileID: 4432909371791119525}
   m_Layer: 0
   m_Name: ClothesShopkeeper
   m_TagString: Untagged
@@ -307,19 +306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shopUI: {fileID: 0}
   _interactionHighlight: {fileID: 1247967816412770711}
---- !u!114 &4432909371791119525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6478906168895889372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93051eb6e4a8e894583590d375c97ff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: d986afb94817c8e44bd70823bb5ddee1, type: 2}
 --- !u!1 &6665251082784505092
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 6665251082784505092}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -393,7 +379,7 @@ SpriteRenderer:
   m_SortingLayerID: -1340933013
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ecd359c045351424082d2ba03ec132df, type: 3}
+  m_Sprite: {fileID: -1300991061, guid: 03341a22e1934d148bd1ea9840ea01bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

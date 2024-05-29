@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
     #region Public Fields
     public MouseSelection MouseSelection;
     public ItemHover ItemHover;
-    public AudioSource AudioSource;
     #endregion
 
     private static GameManager _instance;

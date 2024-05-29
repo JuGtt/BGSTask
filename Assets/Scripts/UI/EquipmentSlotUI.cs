@@ -35,7 +35,7 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 
         if (item.ItemType != _itemType)
         {
-            //TODO: Add audio feedback.
+            AudioManager.Instance.PlaySound("Denied", 0.1f);
             Debug.Log("Cant Equip this here!");
             return;
         }
@@ -85,8 +85,7 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            //TODO: SFX
-            Debug.Log("Not enough space to unequip!");
+            AudioManager.Instance.PlaySound("Denied", 0.1f);
         }
     }
     #endregion

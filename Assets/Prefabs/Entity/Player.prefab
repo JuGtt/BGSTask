@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 4035236138170748462}
   - component: {fileID: 8835267310432371387}
   - component: {fileID: 4909767983072268929}
+  - component: {fileID: 5734151392631750135}
   m_Layer: 0
   m_Name: Render
   m_TagString: Untagged
@@ -652,6 +653,18 @@ MonoBehaviour:
   _clothesSlot: {fileID: 0}
   _underwear: {fileID: 9140943050324952511}
   _underwearSlot: {fileID: 0}
+--- !u!114 &5734151392631750135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362062310411969177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be829a743f8ed64abe89b0ee93a8d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7054881064500792357
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +677,6 @@ GameObject:
   - component: {fileID: 708810378762142835}
   - component: {fileID: 5022142968250191098}
   - component: {fileID: 7580519116168995184}
-  - component: {fileID: 4700693662672988170}
   - component: {fileID: 23087108751204195}
   m_Layer: 0
   m_Name: Player
@@ -871,19 +883,6 @@ MonoBehaviour:
   _moveSpeed: 5
   _runningSpeed: 8
   _isRunning: {fileID: 11400000, guid: d7401692f338bbe4e96927852a3c67f6, type: 2}
---- !u!114 &4700693662672988170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7054881064500792357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93051eb6e4a8e894583590d375c97ff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: 142fd49fabf221f40ae970bd116ddd05, type: 2}
 --- !u!114 &23087108751204195
 MonoBehaviour:
   m_ObjectHideFlags: 0

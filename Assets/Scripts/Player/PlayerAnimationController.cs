@@ -39,6 +39,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _baseAnimator = GetComponent<Animator>();
         PopulateClothingAnimators();
+        _lookDirection = new Vector2(0, -1); // Start Facing Down.
     }
 
     private void OnEnable()

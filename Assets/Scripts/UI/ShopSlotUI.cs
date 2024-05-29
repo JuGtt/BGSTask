@@ -39,18 +39,19 @@ public class ShopSlotUI : MonoBehaviour
             BuyItem();
         }
         else
-            Debug.Log("Not enough coins!");
+        {
+            AudioManager.Instance.PlaySound("Denied", 0.1f);
+        }
     }
     #endregion
 
     #region Private Fields
     private void BuyItem()
     {
-        Debug.Log("Buy Item");
         bool bought = GameAssets.PlayerInventory.AddItem(_item, 1);
         if (bought)
         {
-            //TODO: SFX
+            AudioManager.Instance.PlaySound("ItemBuy", 0.2f);
             GameAssets.PlayerInventory.AddCoins(-_value);
         }
     }
