@@ -327,7 +327,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6371063672295168808}
-  - component: {fileID: 2553858531303697256}
   - component: {fileID: 2888629223335125768}
   m_Layer: 0
   m_Name: TriggerCollider
@@ -351,21 +350,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4366746075116632366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2553858531303697256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2383208044908586071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77a877c528b86048900ee2489eaee01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!58 &2888629223335125768
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -678,6 +662,7 @@ GameObject:
   - component: {fileID: 5022142968250191098}
   - component: {fileID: 7580519116168995184}
   - component: {fileID: 23087108751204195}
+  - component: {fileID: 935730521144191076}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -773,34 +758,6 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemHover, Assembly-CSharp
-        m_MethodName: OnMousePosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MouseFollower, Assembly-CSharp
-        m_MethodName: OnMousePosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d1221328-56dd-4fc2-a7c1-17c505894b78
-    m_ActionName: UI/New action
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 7580519116168995184}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnRun
@@ -817,13 +774,13 @@ MonoBehaviour:
     m_ActionName: Player/Run[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2553858531303697256}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
-        m_MethodName: OnInteract
-        m_Mode: 0
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -849,9 +806,9 @@ MonoBehaviour:
     m_ActionName: Player/ToggleUI[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 23087108751204195}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OnMenu
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MouseSelection, Assembly-CSharp
+        m_MethodName: OnMousePosition
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -861,8 +818,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: edb83e2d-d9a2-4c6f-ab01-1714b6495943
-    m_ActionName: UI/ToggleUI[/Keyboard/e]
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ItemHover, Assembly-CSharp
+        m_MethodName: OnMousePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e22a0293-8eed-40f2-bc58-6506dc0efea5
+    m_ActionName: Player/MousePosition[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 935730521144191076}
+        m_TargetAssemblyTypeName: CheatsForTesting, Assembly-CSharp
+        m_MethodName: OnAddCoins
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 80224966-be81-474d-959b-4061799c10b7
+    m_ActionName: Player/AddCoin[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 935730521144191076}
+        m_TargetAssemblyTypeName: CheatsForTesting, Assembly-CSharp
+        m_MethodName: OnRemoveCoins
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec243420-5fd1-4ea4-82f5-40c45f1fb39c
+    m_ActionName: Player/RemoveCoin[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KeyboardMouse
   m_DefaultActionMap: Player
@@ -895,8 +896,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c97406ca8cbe242856ba35b116df05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _npcLayer: 3
   _playerInputManager: {fileID: 5022142968250191098}
   _inventoryUI: {fileID: 0}
+--- !u!114 &935730521144191076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054881064500792357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2411d4d765d4ba4bb686b7478bcfb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _addCoinAmount: 500
+  _removeCoinAmount: 50
+  _playerCoinAmount: {fileID: 11400000, guid: 14da33c9199cd924f86c0d34953c487d, type: 2}
 --- !u!1 &8258605609713665059
 GameObject:
   m_ObjectHideFlags: 0

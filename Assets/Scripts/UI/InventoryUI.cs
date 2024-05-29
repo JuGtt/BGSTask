@@ -55,6 +55,10 @@ public class InventoryUI : MonoBehaviour
         _inventory.gameObject.SetActive(show);
         if (_equipmentTab != null) _equipmentTab.SetActive(show);
         UpdateInventoryDisplay();
+        if (show)
+            AudioManager.Instance.PlaySound("UIOpen", 0.3f);
+        else
+            AudioManager.Instance.PlaySound("UIClose", 0.3f);
     }
 
     public bool AddItem(ItemSO newItem, int amount)
@@ -104,6 +108,8 @@ public class InventoryUI : MonoBehaviour
 
     private void OnEnable()
     {
+        if (_inShop)
+            return;
         _underwearEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
         _clothesEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
         _hairEquipmentSlot.OnEquipmentSlotChanged += HandleEquipmentChange;
@@ -112,6 +118,8 @@ public class InventoryUI : MonoBehaviour
 
     private void OnDisable()
     {
+        if (_inShop)
+            return;
         _underwearEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
         _clothesEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
         _hairEquipmentSlot.OnEquipmentSlotChanged -= HandleEquipmentChange;
@@ -129,7 +137,7 @@ public class InventoryUI : MonoBehaviour
         bool isSlotEmpty = slot.IsEmpty;
 
         InventorySlotUI uiSlot = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity);
-        uiSlot.Index = index; // TODO:
+        uiSlot.Index = index;
         uiSlot.name = "InventoryUISlot";
         uiSlot.transform.SetParent(_contentPanel);
         uiSlot.transform.localScale = Vector3.one;
@@ -144,17 +152,6 @@ public class InventoryUI : MonoBehaviour
         uiSlot.SetData(slot.Item, slot.Amount);
 
         return uiSlot;
-    }
-
-    private int GetIndexOfInventoryItem(ItemSO item)
-    {
-        //TODO: Problem if there two or more of the same item.
-        for (int i = 0; i < _uiItems.Count; i++)
-        {
-            if (_uiItems[i].ID == item.ID)
-                return i;
-        }
-        return -1;
     }
 
     [ContextMenu("Update Inventory")]
@@ -185,7 +182,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     private void HandleEquipmentChange(ItemSO item)
-    {        
+    {
         ItemSO itemToAdd;
         _playerInventory.RemoveItem(_currentlySelectedItemIndex);
 
@@ -218,7 +215,7 @@ public class InventoryUI : MonoBehaviour
 
     private void HandleClick(InventorySlotUI slotUI, ItemSO item, int amount)
     {
-        AudioManager.Instance.PlaySound("Click", 0.2f);
+        //AudioManager.Instance.PlaySound("Click", 0.2f);
         GameManager.Instance.ItemHover.Toggle(false);
 
         if (slotUI.Sell)
@@ -285,7 +282,7 @@ public class InventoryUI : MonoBehaviour
 
                 if (totalAmount > targetSlot.Item.MaxStackSize)
                 {
-                    //TODO: Handle swapping amounts if one of the items is at the maximum already
+                    //TODO: Maybe handle swapping amounts if one of the items is at the maximum already
                     int excessAmount = totalAmount - targetSlot.Item.MaxStackSize;
                     targetSlot.Amount = targetSlot.Item.MaxStackSize;
                     selectedSlot.Amount = excessAmount;

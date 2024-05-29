@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2532b78c0958bc742ab8bd025423cc4a, type: 3}
+  m_Name: Plate Armor
+  m_EditorClassIdentifier: 
+  _id: 5
+  _isStackable: 0
+  _canSell: 1
+  _maxStackSize: 1
+  _description: A plate armor!
+  _itemType: {fileID: 11400000, guid: f951e81eef3fd3d4d9c1bec42cb7ef25, type: 2}
+  _UIDisplay: {fileID: -2021869194, guid: c5cd06249d3b38c4381066b071156e88, type: 3}
+  _animator: {fileID: 22100000, guid: cf34c4c651ca8fd468b22e4ae3142bd8, type: 2}
+  _value: 5000

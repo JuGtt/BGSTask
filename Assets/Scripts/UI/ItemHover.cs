@@ -6,7 +6,7 @@ public class ItemHover : MonoBehaviour
 {
     #region Serialized Fields
     [SerializeField]
-    private TextMeshProUGUI _itemName, _itemType, _itemDescription;
+    private TextMeshProUGUI _itemName, _itemType, _itemDescription, _itemSellValue;
     [SerializeField]
     private float _followSpeed = 15f;
     [SerializeField]
@@ -40,11 +40,12 @@ public class ItemHover : MonoBehaviour
 
         _itemName.SetText(item.name);
         if (item.ItemType != null)
-            _itemType.SetText(item.ItemType.ToString());
+            _itemType.SetText(item.ItemType.name.ToString());
         else
             _itemType.SetText("");
 
         _itemDescription.SetText(item.Description);
+        _itemSellValue.SetText(item.Value.ToString());
 
         transform.position = _mousePos + _offset;
     }

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2532b78c0958bc742ab8bd025423cc4a, type: 3}
   m_Name: Leather Hat
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 4
   _isStackable: 0
+  _canSell: 1
   _maxStackSize: 1
-  _description: Warm.
+  _description: Good for warm days!
   _itemType: {fileID: 11400000, guid: 1372cf67d36de2648b8bb7a2ae4a548d, type: 2}
-  _UIDisplay: {fileID: -453665831, guid: 978f01ec8c98be64a93c2dfe13427f9d, type: 3}
+  _UIDisplay: {fileID: 2043019121, guid: c5cd06249d3b38c4381066b071156e88, type: 3}
   _animator: {fileID: 22100000, guid: b00e0ff7ca3120841a6e2e31a6b3f384, type: 2}
-  _value: 100
+  _value: 340

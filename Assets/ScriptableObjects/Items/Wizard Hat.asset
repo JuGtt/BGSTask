@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2532b78c0958bc742ab8bd025423cc4a, type: 3}
   m_Name: Wizard Hat
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 8
   _isStackable: 0
+  _canSell: 1
   _maxStackSize: 1
   _description: Maybe it will give you powers..
   _itemType: {fileID: 11400000, guid: 1372cf67d36de2648b8bb7a2ae4a548d, type: 2}
-  _UIDisplay: {fileID: 265984237, guid: 00d37dcf7652d1440adae9eee929339c, type: 3}
+  _UIDisplay: {fileID: 555795954, guid: c5cd06249d3b38c4381066b071156e88, type: 3}
   _animator: {fileID: 22100000, guid: daa119af81df714419327baf9efac730, type: 2}
   _value: 500

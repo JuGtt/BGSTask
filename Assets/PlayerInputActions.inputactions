@@ -40,6 +40,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "e22a0293-8eed-40f2-bc58-6506dc0efea5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AddCoin",
+                    "type": "Button",
+                    "id": "80224966-be81-474d-959b-4061799c10b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoveCoin",
+                    "type": "Button",
+                    "id": "ec243420-5fd1-4ea4-82f5-40c45f1fb39c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -185,36 +212,10 @@
                     "action": "ToggleUI",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "3be686f9-c741-42f4-89cb-1458c227a6ae",
-            "actions": [
-                {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "d1221328-56dd-4fc2-a7c1-17c505894b78",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
-                    "name": "ToggleUI",
-                    "type": "Button",
-                    "id": "edb83e2d-d9a2-4c6f-ab01-1714b6495943",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
                     "name": "",
-                    "id": "bafd5708-3837-442b-bceb-cbb38b34cfd5",
+                    "id": "2bfdbf97-065d-40bb-b2c0-f336d45b26ea",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
@@ -225,12 +226,23 @@
                 },
                 {
                     "name": "",
-                    "id": "a4f429be-e9a5-4580-86ac-60b62e5b5012",
-                    "path": "<Keyboard>/e",
+                    "id": "7c0129a3-51d4-4828-899e-e719b066e662",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "ToggleUI",
+                    "action": "AddCoin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44955afc-c383-4591-b81e-4ae0b4f336fa",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoveCoin",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

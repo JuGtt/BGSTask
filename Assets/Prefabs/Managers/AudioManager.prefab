@@ -63,3 +63,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: dfb7f0f9fd1c6f546807444f2a1e58bf, type: 3}
   - name: Click
     clip: {fileID: 8300000, guid: aa93e42f1ac3d284f9f3017865797444, type: 3}
+  - name: UIOpen
+    clip: {fileID: 8300000, guid: 02b029b058e0afd4c989f12f12421fff, type: 3}
+  - name: UIClose
+    clip: {fileID: 8300000, guid: 4a0d910c164b130468278cb2092031b7, type: 3}

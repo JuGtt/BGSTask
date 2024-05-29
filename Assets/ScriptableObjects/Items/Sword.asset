@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2532b78c0958bc742ab8bd025423cc4a, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  _id: 2
+  _id: 0
   _isStackable: 0
+  _canSell: 1
   _maxStackSize: 1
-  _description: Careful with this.
-  _itemType: Weapon
+  _description: Careful with it!
+  _itemType: {fileID: 11400000, guid: c6c82aaaafb90a64ab8a087b134de094, type: 2}
   _UIDisplay: {fileID: 574856518, guid: c5cd06249d3b38c4381066b071156e88, type: 3}
-  _value: 1000
+  _animator: {fileID: 0}
+  _value: 583

@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerEquipmentManager : MonoBehaviour
 {
     #region Serialized Fields
-
     [Header("Hair")]
     [SerializeField]
     private Animator _hair;

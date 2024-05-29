@@ -29,6 +29,9 @@ public class ShopUI : MonoBehaviour
             GameObject child = transform.GetChild(i).gameObject;
             child.SetActive(show);
         }
+
+        if (show)
+            AudioManager.Instance.PlaySound("ItemBuy", 0.2f);
         //UpdateInventoryDisplay(); // Enable if disabling on update.
     }
 

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 {
-    #region Static Event
+    #region Static Events
     public static event Action OnEquipmentChanged;
     #endregion
-    #region Event
+
+    #region Public Events
     public event Action<ItemSO> OnEquipmentSlotChanged;
     #endregion
 
@@ -26,7 +27,6 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
     #endregion
 
     #region Public Methods
-    [ContextMenu("Update Equipped Item")]
     public void ChangeEquippedItem(ItemSO newItem)
     {
         ItemSO item = newItem;
@@ -74,8 +74,6 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 
     private void Unequip()
     {
-        //GameManager.Instance.MouseSelection.SetData(_equippedItem, 1);
-        //GameManager.Instance.MouseSelection.Toggle(true);
         bool unequiped = GameAssets.PlayerInventory.AddItem(_equippedItem, 1);
         if (unequiped)
         {

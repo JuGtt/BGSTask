@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _isStackable: 0
+  _canSell: 1
   _maxStackSize: 1
   _description: Maybe don't sell it.
   _itemType: {fileID: 11400000, guid: 0fb87b606efd3ac4890ec565c4fd4e9c, type: 2}
-  _UIDisplay: {fileID: -1298831155, guid: a8b33a38210b33240b4dbdf50a4b4832, type: 3}
+  _UIDisplay: {fileID: -968102842, guid: c5cd06249d3b38c4381066b071156e88, type: 3}
   _animator: {fileID: 22100000, guid: 9eab33a6cfb99534eb2532ba28f2cb98, type: 2}
   _value: 0

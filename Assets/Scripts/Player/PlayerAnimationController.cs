@@ -7,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField]
     private BoolVariable _isRunning;
     #endregion
+    
     #region Private Fields
     private Animator _baseAnimator;
     private Animator[] _clothingAnimators;
@@ -62,19 +63,22 @@ public class PlayerAnimationController : MonoBehaviour
         float speed = _moveInput.sqrMagnitude;
         Vector2 moveInput = _moveInput;
 
-        if (speed >= 0.1f)        
+        if (speed >= 0.1f)
             moveInput *= _isRunning ? 3 : 2;
         else
             moveInput = _lookDirection;
-        
+
 
         // Sync Animation Across All Clothing
         _baseAnimator.SetFloat("Horizontal", moveInput.x);
         _baseAnimator.SetFloat("Vertical", moveInput.y);
         foreach (Animator animator in _clothingAnimators)
         {
-            animator.SetFloat("Horizontal", moveInput.x);
-            animator.SetFloat("Vertical", moveInput.y);
+            if (animator.runtimeAnimatorController != null)
+            {
+                animator.SetFloat("Horizontal", moveInput.x);
+                animator.SetFloat("Vertical", moveInput.y);
+            }
         }
     }
     #endregion

@@ -7,38 +7,25 @@ public class Shopkeeper : MonoBehaviour
     [SerializeField]
     private ShopUI _shopUI;
     [SerializeField]
-    private GameObject _interactionHighlight;
+    private GameObject _interactionHightlight;
     #endregion
 
     #region Public Methods
     public void OpenShop()
     {
-        _shopUI.Toggle(true);
+        if (_shopUI != null)
+            _shopUI.Toggle(true);
     }
 
     public void CloseShop()
     {
-        _shopUI.Toggle(false);
-    }
-    #endregion
-
-    #region Private Methods
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            _interactionHighlight.SetActive(true);
-            OpenShop();
-        }
+        if (_shopUI != null)
+            _shopUI.Toggle(false);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public void ToggleCanInteract(bool canInteract)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            _interactionHighlight.SetActive(false);
-            CloseShop();
-        }
+        _interactionHightlight.SetActive(canInteract);
     }
     #endregion
 }

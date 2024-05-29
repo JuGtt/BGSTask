@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    #region Public Fields
+    #region Static Event
     public static event Action<Vector2> OnMoveAction;
     #endregion
 
@@ -58,20 +58,12 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    #region Public Methods
-    #endregion
-
     #region Private Methods
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
-    private void OnEnable()
-    {
-        // Subscribe Clothes Change to Update Animator
-    }
-
+    
     private void Update()
     {
         UpdateIsRunning();
@@ -90,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateIsRunning()
     {
-        _isRunning.SetValue(_isRunningButtonDown && CanRun());
+        IsRunning = _isRunningButtonDown && CanRun();
     }
     #endregion
 
