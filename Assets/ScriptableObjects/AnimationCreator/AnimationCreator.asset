@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a04d8429b744a4388ad2339cc638b0, type: 3}
   m_Name: AnimationCreator
   m_EditorClassIdentifier: 
-  _spriteSheet: {fileID: 2800000, guid: a8b33a38210b33240b4dbdf50a4b4832, type: 3}
+  _spriteSheet: {fileID: 2800000, guid: 3aa383c4eeef67749b4e69cdd4097ad2, type: 3}
   _cellSize: {x: 64, y: 64}
   _frameRate: 12
-  _animationPrefix: Boxr_
-  _savePath: Assets/Animations/Clothing/Clothes/Boxr/
+  _animationPrefix: Dap_
+  _savePath: Assets/Animations/Clothing/Hairs/Dap/

@@ -4,12 +4,17 @@ using UnityEngine;
 public class ShopUI : MonoBehaviour
 {
     #region Serialized Fields
+    [Header("Settings")]
+    [SerializeField, Tooltip("The fee rate for the items sell value.")]
+    private float _shopFee = 0.05f;
+
+    [Header("References")]
+    [SerializeField, Tooltip("What will sell here?")]
+    private InventorySO _inventory;
     [SerializeField]
-    private ShopSlotUI _itemPrefab;
+    private ShopSlotUI _shopItemUIPrefab;
     [SerializeField]
     private RectTransform _content;
-    [SerializeField]
-    private InventorySO _inventory;
     #endregion
 
     #region Private Fields
@@ -19,7 +24,11 @@ public class ShopUI : MonoBehaviour
     #region Public Methods
     public void Toggle(bool show)
     {
-        gameObject.SetActive(show);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            child.SetActive(show);
+        }
         //UpdateInventoryDisplay(); // Enable if disabling on update.
     }
 
@@ -29,8 +38,8 @@ public class ShopUI : MonoBehaviour
         for (int i = 0; i < _inventory.Inventory.Items.Count; i++)
         {
             InventorySlot itemSlot = _inventory.Inventory.Items[i];
-            ShopSlotUI shopSlotUI = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity, _content);
-            shopSlotUI.SetData(itemSlot.Item.ID);
+            ShopSlotUI shopSlotUI = Instantiate(_shopItemUIPrefab, Vector3.zero, Quaternion.identity, _content);
+            shopSlotUI.SetData(itemSlot.Item.ID, _shopFee);
             _uiItems.Add(shopSlotUI);
         }
     }
@@ -42,10 +51,10 @@ public class ShopUI : MonoBehaviour
             InventorySlot slot = _inventory.Inventory.Items[i];
             if (_uiItems.Count <= i)
             {
-                ShopSlotUI shopSlotUI = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity, _content);
+                ShopSlotUI shopSlotUI = Instantiate(_shopItemUIPrefab, Vector3.zero, Quaternion.identity, _content);
                 _uiItems.Add(shopSlotUI);
             }
-            _uiItems[i].SetData(slot.Item.ID);
+            _uiItems[i].SetData(slot.Item.ID, _shopFee);
         }
     }
 

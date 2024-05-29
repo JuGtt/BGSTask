@@ -21,12 +21,12 @@ public class ShopSlotUI : MonoBehaviour
     #endregion
 
     #region Public Fields
-    public void SetData(int id)
+    public void SetData(int id, float fee)
     {
         _item = GameAssets.Database.GetItemById(id);
 
         _id = id;
-        _value = _item.Value;
+        _value = _item.Value + (int)(_item.Value * fee);
         _itemImage.sprite = _item.ItemImage;
         _itemName.SetText(_item.name);
         _itemValue.SetText(_value.ToString());
@@ -37,7 +37,8 @@ public class ShopSlotUI : MonoBehaviour
         if (_value < GameAssets.PlayerInventory.CoinAmount)
         {
             BuyItem();
-        } else 
+        }
+        else
             Debug.Log("Not enough coins!");
     }
     #endregion
@@ -47,7 +48,11 @@ public class ShopSlotUI : MonoBehaviour
     {
         Debug.Log("Buy Item");
         bool bought = GameAssets.PlayerInventory.AddItem(_item, 1);
-        if (bought) GameAssets.PlayerInventory.AddCoins(-_value);
+        if (bought)
+        {
+            //TODO: SFX
+            GameAssets.PlayerInventory.AddCoins(-_value);
+        }
     }
     #endregion
 }

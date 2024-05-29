@@ -7,7 +7,7 @@ public class InventorySlot
     #endregion
 
     #region Properties
-    public bool IsEmpty => Amount == 0;
+    public bool IsEmpty => Item == null;
     #endregion
 
     #region Constructor

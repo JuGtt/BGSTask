@@ -27,6 +27,19 @@ public class InventorySO : ScriptableObject
             Debug.Log("Index wasn't found.");
     }
 
+    public void RemoveItemByItemID(int id, bool firstOcurrence)
+    {
+        for (int i = 0; i < _inventory.Items.Count; i++)
+        {
+            if (_inventory.Items[i].Item.ID == id)
+            {
+                InventorySlot slot = new InventorySlot();
+                _inventory.Items[i] = slot;
+                if (firstOcurrence) return;
+            }
+        }
+    }
+
     public void RemoveItem(int index)
     {
         InventorySlot emptySlot = new InventorySlot(null, 0);
@@ -46,7 +59,7 @@ public class InventorySO : ScriptableObject
             InventorySlot slot = _inventory.Items[i];
             if (!slot.IsEmpty)
             {
-                if (slot != null && newItem != null)
+                if (newItem != null)
                     if (slot.Item.ID == newItem.ID) // Same Item
                         if (slot.Item.IsStackable) // Stackable
                         {

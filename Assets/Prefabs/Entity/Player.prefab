@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1340933013
   m_SortingLayer: 2
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1298831155, guid: a8b33a38210b33240b4dbdf50a4b4832, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &9140943050324952511
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 2888629223335125768}
   m_Layer: 0
   m_Name: TriggerCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -898,9 +898,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInputManager: {fileID: 5022142968250191098}
   _inventoryUI: {fileID: 0}
-  _inventory: {fileID: 11400000, guid: 142fd49fabf221f40ae970bd116ddd05, type: 2}
-  _mouseFollowerPrefab: {fileID: 2197375054617880786, guid: 0041956ff85d97c4fb05bb58de31c175, type: 3}
-  _itemHoverPrefab: {fileID: 3183446897689548778, guid: 391a2e704cf909846815cb2bf87f286f, type: 3}
 --- !u!1 &8258605609713665059
 GameObject:
   m_ObjectHideFlags: 0

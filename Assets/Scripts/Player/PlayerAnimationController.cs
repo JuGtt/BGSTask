@@ -46,7 +46,7 @@ public class PlayerAnimationController : MonoBehaviour
         PlayerMovement.OnMoveAction += OnMove;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateAnimation();
     }
@@ -66,10 +66,10 @@ public class PlayerAnimationController : MonoBehaviour
         else
             moveInput = _lookDirection;
         
-        _baseAnimator.SetFloat("Horizontal", moveInput.x);
-        _baseAnimator.SetFloat("Vertical", moveInput.y);
 
         // Sync Animation Across All Clothing
+        _baseAnimator.SetFloat("Horizontal", moveInput.x);
+        _baseAnimator.SetFloat("Vertical", moveInput.y);
         foreach (Animator animator in _clothingAnimators)
         {
             animator.SetFloat("Horizontal", moveInput.x);

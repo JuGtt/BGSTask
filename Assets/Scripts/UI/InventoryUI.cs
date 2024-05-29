@@ -5,6 +5,10 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     #region Serialized Fields
+    [Header("Settings")]
+    [SerializeField]
+    private bool _inShop = false;
+
     [Header("References")]
     [SerializeField]
     private InventorySlotUI _itemPrefab;
@@ -40,9 +44,6 @@ public class InventoryUI : MonoBehaviour
             InventorySlotUI uiSlot = InitializeUISlot(emptySlot, i);
             _uiItems.Add(uiSlot);
         }
-
-        // Update Coin Value.
-        _coinPouch.SetText(_playerInventory.CoinAmount.ToString());
 
         // Populate Slots with player's inventory.
         UpdateInventoryDisplay();
@@ -137,6 +138,9 @@ public class InventoryUI : MonoBehaviour
         uiSlot.OnSlotEnter += HandleEnter; // Hover Enter
         uiSlot.OnSlotExit += HandleExit; // Hover Exit
 
+        if (_inShop)
+            uiSlot.Sell = true;
+
         uiSlot.SetData(slot.Item, slot.Amount);
 
         return uiSlot;
@@ -165,12 +169,26 @@ public class InventoryUI : MonoBehaviour
             }
             _uiItems[i].SetData(slot.Item, slot.Amount);
         }
+
+        if (_uiItems.Count > _playerInventory.Inventory.Items.Count)
+        {
+            // Remove excess UI items
+            for (int i = _uiItems.Count - 1; i >= _playerInventory.Inventory.Items.Count; i--)
+            {
+                Destroy(_uiItems[i].gameObject); // Optionally, destroy the GameObject if needed
+                _uiItems.RemoveAt(i);
+            }
+        }
+
+        //Update Coint Pouch
+        _coinPouch.SetText(_playerInventory.CoinAmount.ToString());
     }
 
     private void HandleEquipmentChange(ItemSO item)
     {
         Debug.Log("Equip Change");
         ItemSO itemToAdd;
+        Debug.Log(_currentlySelectedItemIndex);
         _playerInventory.RemoveItem(_currentlySelectedItemIndex);
 
         if (item != null) // Switched gear.
@@ -188,6 +206,7 @@ public class InventoryUI : MonoBehaviour
         if (_currentlySelectedItemIndex != -1)
             HandleDisselect(_currentlySelectedItemIndex);
         GameManager.Instance.MouseSelection.Toggle(false);
+        GameManager.Instance.MouseSelection.SetData();
         _currentlySelectedItemIndex = -1;
     }
 
@@ -195,12 +214,19 @@ public class InventoryUI : MonoBehaviour
     {
         GameManager.Instance.MouseSelection.Toggle(true);
         GameManager.Instance.MouseSelection.SetData(item, amount);
+        Debug.Log(item.name);
     }
 
     private void HandleClick(InventorySlotUI slotUI, ItemSO item, int amount)
     {
         //TODO: AUDIO SFX
         GameManager.Instance.ItemHover.Toggle(false);
+
+        if (slotUI.Sell)
+        {
+            HandleSell(slotUI, item, amount);
+            return;
+        }
 
         //TODO: This index should not be counted on.
         int index = slotUI.Index;
@@ -218,6 +244,18 @@ public class InventoryUI : MonoBehaviour
 
         HandleSelect(item, amount, index);
         _currentlySelectedItemIndex = index;
+    }
+
+    private void HandleSell(InventorySlotUI slotUI, ItemSO item, int amount)
+    {
+        if (slotUI.IsEmpty) return;
+
+        //TODO: SFX
+
+        GameAssets.PlayerInventory.Inventory.Items[slotUI.Index] = new InventorySlot();
+        GameAssets.PlayerInventory.AddCoins(item.Value);
+
+        UpdateInventoryDisplay();
     }
 
     private void HandleSelect(ItemSO item, int amount, int index)

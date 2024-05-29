@@ -33,6 +33,7 @@ public class MouseSelection : MonoBehaviour
     {
         if (item == null)
         {
+            _selectedItem = null;
             _inventorySlotUI.ResetData();
             return;
         }
@@ -40,11 +41,16 @@ public class MouseSelection : MonoBehaviour
         _inventorySlotUI.SetData(item, quantity);
     }
 
+    public void SetData()
+    {
+        SetData(null, 0);
+    }
+
     public void Toggle(bool show)
     {
         gameObject.SetActive(show);
         if (!show)
-            SetData(null, 0);
+            SetData();
     }
     #endregion
 

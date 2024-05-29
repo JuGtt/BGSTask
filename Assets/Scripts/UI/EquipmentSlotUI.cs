@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
 {
+    #region Static Event
+    public static event Action OnEquipmentChanged;
+    #endregion
     #region Event
     public event Action<ItemSO> OnEquipmentSlotChanged;
     #endregion
@@ -40,14 +43,18 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
         ItemSO oldItem = _equippedItem;
         _equippedItem = item;
         _itemImage.sprite = _equippedItem.ItemImage;
+        GameManager.Instance.MouseSelection.SetData();
         OnEquipmentSlotChanged?.Invoke(oldItem);
+        OnEquipmentChanged?.Invoke();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("On Click");
         ItemSO item = GameManager.Instance.MouseSelection.SelectedItem;
-        ChangeEquippedItem(item);
+        if (item != null) // Swapping
+            ChangeEquippedItem(item);
+        else // Unequiping        
+            Unequip();
     }
     #endregion
 
@@ -62,6 +69,24 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerClickHandler
         if (_equippedItem == null)
         {
             _itemImage.enabled = false;
+        }
+    }
+
+    private void Unequip()
+    {
+        //GameManager.Instance.MouseSelection.SetData(_equippedItem, 1);
+        //GameManager.Instance.MouseSelection.Toggle(true);
+        bool unequiped = GameAssets.PlayerInventory.AddItem(_equippedItem, 1);
+        if (unequiped)
+        {
+            _equippedItem = null;
+            UpdateEquippedItem();
+            OnEquipmentChanged?.Invoke();
+        }
+        else
+        {
+            //TODO: SFX
+            Debug.Log("Not enough space to unequip!");
         }
     }
     #endregion

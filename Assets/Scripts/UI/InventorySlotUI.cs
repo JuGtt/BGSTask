@@ -20,6 +20,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private TextMeshProUGUI _quantityText;
     [SerializeField]
     private Button _button;
+    [SerializeField]
+    private bool _sell;
     #endregion
 
     #region Private Fields
@@ -40,6 +42,12 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         set { _index = value; }
     }
     public bool IsEmpty => _empty;
+    public bool Sell
+    {
+        get { return _sell; }
+        set { _sell = value; }
+    }
+    
     public Sprite ItemImage => _itemImage.sprite;
     #endregion
 
