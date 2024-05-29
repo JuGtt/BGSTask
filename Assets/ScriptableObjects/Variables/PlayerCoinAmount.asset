@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ec0fd15cd601b4f85173b792eb91ed, type: 3}
   m_Name: PlayerCoinAmount
   m_EditorClassIdentifier: 
-  Value: 39500
+  Value: 10000
   DeveloperDescription: 
