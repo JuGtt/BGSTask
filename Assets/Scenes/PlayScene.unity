@@ -1254,22 +1254,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021722763}
     m_Modifications:
-    - target: {fileID: 2757836718934119692, guid: edd20f1a3d01b37488dfa95b006e9fb0, type: 3}
-      propertyPath: _equipmentTab
-      value: 
-      objectReference: {fileID: 4105035928058899599}
-    - target: {fileID: 2757836718934119692, guid: edd20f1a3d01b37488dfa95b006e9fb0, type: 3}
-      propertyPath: _hatEquipmentSlot
-      value: 
-      objectReference: {fileID: 2583085606490906627}
-    - target: {fileID: 2757836718934119692, guid: edd20f1a3d01b37488dfa95b006e9fb0, type: 3}
-      propertyPath: _hairEquipmentSlot
-      value: 
-      objectReference: {fileID: 2938151705519763895}
-    - target: {fileID: 2757836718934119692, guid: edd20f1a3d01b37488dfa95b006e9fb0, type: 3}
-      propertyPath: _underwearEquipmentSlot
-      value: 
-      objectReference: {fileID: 357757050599447955}
     - target: {fileID: 4366243766270356181, guid: edd20f1a3d01b37488dfa95b006e9fb0, type: 3}
       propertyPath: m_Name
       value: ShopMenu
@@ -1489,11 +1473,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0041956ff85d97c4fb05bb58de31c175, type: 3}
---- !u!1 &4105035928058899599 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4651070895345343752, guid: 1820b70500a394e46b7ccc3739b59e99, type: 3}
-  m_PrefabInstance: {fileID: 8679536248653427079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4982244986987062864
 PrefabInstance:
   m_ObjectHideFlags: 0
